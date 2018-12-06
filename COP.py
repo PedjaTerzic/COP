@@ -10,7 +10,7 @@
 
 from tkinter import *
 import tkinter.messagebox
-from tkinter.ttk import Frame, Label, Entry
+from tkinter.ttk import Frame, Label, Entry , Button , Style
 
 class Cop(Frame):
     def __init__(self, parent):
@@ -28,33 +28,33 @@ class Cop(Frame):
         global res
         res = StringVar()
 
-        frame1 = Frame(self)
+        frame1 = Frame(self,style='My.TFrame')
         frame1.pack(fill=X)
 
-        lbl1 = Label(frame1, text="Enter a number :", width=13)
+        lbl1 = Label(frame1, text="Enter a number :", width=13,background='orange')
         lbl1.pack(side=LEFT, padx=5, pady=5)
 
-        entry1 = Entry(frame1,textvariable=num)
+        entry1 = Entry(frame1,textvariable=num,style='My.TEntry')
         entry1.pack(fill=X, padx=5, expand=True)
 
         
-        frame2 = Frame(self)
+        frame2 = Frame(self,style='My.TFrame')
         frame2.pack(fill=X)
 
-        result = Label(frame2, textvariable=res, width=22)
+        result = Label(frame2, textvariable=res, width=22,background='orange')
         result.pack(side=LEFT, padx=86, pady=5)
 
 		
-        frame3 = Frame(self)
+        frame3 = Frame(self,style='My.TFrame')
         frame3.pack(fill=X)
 
-        btntest = Button(frame3, text="Test", width=8, command=self.test)
+        btntest = Button(frame3, text="Test", width=10, command=self.test,style='My.TButton')
         btntest.pack(side=LEFT, anchor=N, padx=5, pady=5)
 		
-        btnclear = Button(frame3, text="Clear", width=8, command=self.clear)
+        btnclear = Button(frame3, text="Clear", width=10, command=self.clear,style='My.TButton')
         btnclear.pack(side=LEFT, anchor=N, padx=5, pady=5)
 		
-        btnclose = Button(frame3, text="Close", width=8, command=self.quit)
+        btnclose = Button(frame3, text="Close", width=10, command=self.quit,style='My.TButton')
         btnclose.pack(side=LEFT, anchor=N, padx=5, pady=5)
 
     def errorMsg(self,msg):
@@ -92,7 +92,11 @@ class Cop(Frame):
 
 def main():
     root = Tk()
-    root.geometry("300x100")
+    s = Style()
+    s.configure('My.TFrame', background='orange')
+    s.configure('My.TButton', background='light gray')
+    s.configure('My.TEntry', fieldbackground='light gray')
+    root.geometry("300x85")
     cop = Cop(root)
     root.mainloop()
 
