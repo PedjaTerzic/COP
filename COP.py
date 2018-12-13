@@ -92,6 +92,7 @@ class Cop(Frame):
 
 def main():
     root = Tk()
+    root.resizable(0,0)
     s = Style()
     s.configure('My.TFrame', background='orange')
     s.configure('My.TButton', background='light gray')
